@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+  datasource:
+    url: jdbc:postgresql://localhost/mall
+    username: root
+    password: root
