@@ -14,10 +14,11 @@ import javax.persistence.*;
 @Setter
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "role_type")
+    @Column(name = "role_type", unique = true)
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
+
 }

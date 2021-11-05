@@ -2,10 +2,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Java 1154</title>
+    <meta charset="UTF-8">
+    <title>Welcome page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 </head>
 <body>
-<h1 th:inline="text">Hello!</h1>
+
+<div class="container">
+    <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="#" th:href="@{/}" class="nav-link active">Main</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+            <li class="nav-item" th:if="${authUser}">
+                <form method="post" th:action="@{/auth/logout}">
+                    <input class="btn btn-danger" type="submit" value="Logout" />
+                </form>
+            </li>
+        </ul>
+    </header>
+    <div class="px-4 py-5 my-5 text-center">
+        <h1 class="display-5 fw-bold">Java Spring MegaMall</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">Enjoy your shopping in our first-class carbon-free MegaMall</p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" th:if="${!authUser}">
+                <a href="#" th:href="@{/auth/login}">
+                    <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
+                        Sign in
+                    </button>
+                </a>
+                <a href="#" th:href="@{/auth/register}">
+                    <button type="button" class="btn btn-outline-secondary btn-lg px-4">
+                        Register
+                    </button>
+                </a>
+            </div>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" th:if="${authUser}">
+                <a href="#" th:href="@{/products}">
+                    <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
+                        Go for shopping
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
