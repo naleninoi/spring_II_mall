@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <h3 class="display-4">Please enter your credentials</h3>
+
+        <form th:action="@{/auth/register}" th:object="${userDto}" method="post" id="loginForm">
+            <div th:if="${#fields.hasErrors('global')}">
+                <p class="alert alert-danger" th:each="err : ${#fields.errors('global')}" th:text="${err}">Global Errors</p>
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="form-label">First Name</label>
+                <input class="form-control" type="text" name="firstName" id="firstName" placeholder="Your first name"
+                th:field="*{firstName}"/>
+                <p class="alert alert-warning" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</p>
+            </div>
+            <div class="form-group">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input class="form-control" type="text" name="lastName" id="lastName" placeholder="Your last name"
+               th:field="*{lastName}"/>
+                <p class="alert alert-warning" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</p>
+            </div>
+            <div class="form-group">
+                <label for="email" class="form-label">E-mail address</label>
+                <input class="form-control" type="text" name="email" id="email" placeholder="Your e-mail address"
+               th:field="*{email}"/>
+                <p class="alert alert-warning" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</p>
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input class="form-control" type="password" name="password" id="password" placeholder="Choose your secret password"
+               th:field="*{password}"/>
+                <p class="alert alert-warning" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</p>
+            </div>
+            <div class="form-group">
+                <label for="passwordMatch" class="form-label">Re-type password</label>
+                <input class="form-control" type="password" name="passwordMatch" id="passwordMatch" placeholder="Re-type your password"
+                       th:field="*{passwordMatch}"/>
+                <p class="alert alert-warning" th:if="${#fields.hasErrors('passwordMatch')}" th:errors="*{passwordMatch}">Password Match Error</p>
+            </div>
+                <input class="btn btn-primary" type="submit" value="Submit"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

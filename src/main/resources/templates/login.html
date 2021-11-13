@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <div class="mb-3" th:if="${error}">
+        <p class="bg-danger">Sorry, wrong username or password</p>
+    </div>
+    <div class="mb-3" th:if="${newRegistered}">
+        <p class="bg-success">Registration successful, please sign in</p>
+    </div>
+    <div class="mb-3">
+        <h3 class="display-4">Please sign in</h3>
+        <div class="input-group mb-3">
+            <form th:action="@{/auth/login}" method="post" id="loginForm">
+                <input class="form-control" type="text" name="username" id="username" placeholder="Username"/>
+                <input class="form-control" type="password" name="password" id="password" placeholder="Password"/>
+                <input class="btn btn-primary" type="submit" value="Login"/>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
