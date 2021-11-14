@@ -7,21 +7,9 @@
 </head>
 <body>
     <div class="container">
-        <header class="d-flex justify-content-center py-3">
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="#" th:href="@{/}" class="nav-link">Main</a></li>
-                <li class="nav-item"><a href="#" th:href="@{/admin}" class="nav-link active">Admin</a></li>
-                <li class="nav-item"><a href="#" th:href="@{/admin/users}" class="nav-link" aria-current="page">Users</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-                <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-                <li class="nav-item">
-                    <form method="post" th:action="@{/auth/logout}">
-                        <input class="btn btn-danger" type="submit" value="Logout" />
-                    </form>
-                </li>
-            </ul>
-        </header>
-        <h3 class="display-3">Hello Mr.Admin</h3>
+        <header th:insert="common/top-menu.html :: top-menu"></header>
+        <div th:insert="common/admin-menu.html :: admin-menu"></div>
+        <h3 class="display-5">Hello Mr.Admin</h3>
     </div>
 </body>
 </html>
