@@ -26,6 +26,9 @@
                 </a>
             </div>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" sec:authorize="isAuthenticated()">
+                <p class="fs-5" th:text="'Welcome back, ' + ${currentUser.firstName} + '!'"></p>
+            </div>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" sec:authorize="isAuthenticated()">
                 <a href="#" th:href="@{/products}">
                     <button type="button" class="btn btn-primary btn-lg px-4 gap-3">
                         Go for shopping
