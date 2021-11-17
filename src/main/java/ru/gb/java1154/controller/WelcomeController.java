@@ -19,8 +19,8 @@ public class WelcomeController {
 
     @GetMapping("")
     public String getWelcomePage(Model model) {
-        Optional<User> authenticatedUser = securityService.getCurrentUser();
-        model.addAttribute("authUser", authenticatedUser.isPresent());
+        Optional<User> optionalUser = securityService.getCurrentUser();
+        optionalUser.ifPresent(currentUser -> model.addAttribute("currentUser", currentUser));
         return "index";
     }
 
