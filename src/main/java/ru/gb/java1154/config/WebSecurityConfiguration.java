@@ -58,7 +58,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         web
                 .ignoring()
                 .antMatchers("/h2-console/**")
-                .antMatchers("/ws/**");
+                .antMatchers("/ws/**")
+                .antMatchers("/api/**");
     }
 
 }
