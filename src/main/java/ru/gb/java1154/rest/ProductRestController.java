@@ -67,13 +67,13 @@ public class ProductRestController {
 
     @PostMapping()
     public ResponseEntity<ProductDto> createProduct(@RequestBody ProductDto requestDto) {
-        Optional <Product> optionalProduct = productService.findByTitle(requestDto.getTitle());
+        Optional <Product> optionalProduct = productService.findByTitle(requestDto.getTitle().toLowerCase());
         if (optionalProduct.isPresent()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
         } else {
             Product product = new Product();
             product.setPrice(requestDto.getPrice());
-            product.setTitle(requestDto.getTitle());
+            product.setTitle(requestDto.getTitle().toLowerCase());
             productService.save(product);
             ProductDto result = new ProductDto( product );
             return ResponseEntity.created( URI.create( "products/" + product.getId() ) ).body(result);
@@ -90,7 +90,7 @@ public class ProductRestController {
         } else {
             Product product = optionalProduct.get();
             product.setPrice(requestDto.getPrice());
-            product.setTitle(requestDto.getTitle());
+            product.setTitle(requestDto.getTitle().toLowerCase());
             productService.save(product);
             ProductDto result = new ProductDto( product );
             return ResponseEntity.ok(result);
