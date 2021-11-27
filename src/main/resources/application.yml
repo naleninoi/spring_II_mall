@@ -42,3 +42,9 @@ session:
     url: jdbc:h2:mem:sessions
     username: sa
     password: password
+
+zuul:
+  routes:
+    shop:
+      path: /shop/**
+      url: http://localhost:8080
