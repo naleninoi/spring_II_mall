@@ -1,6 +1,8 @@
 package ru.gb.java1154.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -10,6 +12,9 @@ import java.util.Set;
 @Entity
 @Table(name = "products")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class Product {
 
     @Id
@@ -23,7 +28,7 @@ public class Product {
     private BigDecimal price;
 
     @Column(name = "is_deleted")
-    private boolean isDeleted;
+    private boolean isDeleted = false;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "products_categories",

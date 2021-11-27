@@ -26,19 +26,8 @@ public class ProductRestController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<ProductDto>> getAllProducts(
-            @RequestParam(required = false, defaultValue = "0") BigDecimal min,
-            @RequestParam(required = false) BigDecimal max ) {
-        List<Product> products;
-        if (min != null & max != null) {
-            products = productService.findProductsByPriceInterval(min, max);
-        } else if (min != null) {
-            products = productService.findProductsByMinPrice(min);
-        } else if (max != null) {
-            products = productService.findProductsByMaxPrice(max);
-        } else {
-            products = productService.findAllProducts();
-        }
+    public ResponseEntity<List<ProductDto>> getAllProducts() {
+        List<Product> products = productService.findAllProducts();
         List<ProductDto> result = products.stream().map(ProductDto::new).collect(Collectors.toList());
         return ResponseEntity.ok(result);
     }
