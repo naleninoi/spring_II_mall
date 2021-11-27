@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:prod="http://gb.ru/java1154/soap/web/products">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <prod:getProductsRequest>
+            <prod:category/>
+        </prod:getProductsRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

@@ -29,7 +29,7 @@ public class Product {
     @JoinTable(name = "products_categories",
             joinColumns = {@JoinColumn(name = "product_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "category_id", referencedColumnName = "id")})
-    private Set<Role> categories = new HashSet<>();
+    private Set<Category> categories = new HashSet<>();
 
 
 }

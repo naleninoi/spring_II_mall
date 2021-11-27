@@ -39,7 +39,7 @@ public class UserServiceImplementation implements UserService, UserDetailsServic
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> optionalUser = userRepository.findByEmail(username);
-        if (optionalUser.isEmpty()) {
+        if (!optionalUser.isPresent()) {
             throw new UsernameNotFoundException("Bad credentials");
         }
         User user = optionalUser.get();
