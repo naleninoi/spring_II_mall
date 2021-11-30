@@ -1,14 +1,14 @@
 package ru.gb.java1154.dto;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import ru.gb.java1154.entity.Category;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Getter
 @ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class CategoryDto {
 
     String title;
